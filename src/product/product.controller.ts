@@ -7,17 +7,20 @@ import {
   Param,
   Delete,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { paginationDTO } from 'src/shared/dto/pagination.dto';
+import { jwtStrategy } from 'src/auth/strategis/jwt.strategy';
 
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Post()
+  @UseGuards(jwtStrategy)
   create(@Body() createProductDto: CreateProductDto) {
     return this.productService.create(createProductDto);
   }
