@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+ import { IsString } from 'class-validator';
 import { IsNumber } from 'class-validator';
 import { IsDate } from 'class-validator';
 import { IsBoolean } from 'class-validator';
