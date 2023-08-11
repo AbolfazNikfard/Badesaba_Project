@@ -12,8 +12,10 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { CartEntity } from '../../cart/entities/cart.entity';
 
 @Entity('products')
 export class ProductEntity {
@@ -98,4 +100,7 @@ export class ProductEntity {
   @ManyToOne(() => CatagoryEntity, (category) => category.Products)
   @JoinColumn({ name: 'categoryId' })
   category: CatagoryEntity;
+
+  @OneToMany(()=>CartEntity,(carts)=>carts.product)
+  carts:CartEntity[]
 }
