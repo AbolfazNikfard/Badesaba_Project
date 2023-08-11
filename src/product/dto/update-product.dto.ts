@@ -1,4 +1,6 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateProductDto } from './create-product.dto';
+import { OmitType, PartialType } from '@nestjs/mapped-types';
+import { ProductEntity } from '../entities/product.entity';
 
-export class UpdateProductDto extends PartialType(CreateProductDto) {}
+export class UpdateProductDto extends PartialType(
+  OmitType(ProductEntity, ['id', 'createdAt', 'deletedAt'] as const),
+) {}

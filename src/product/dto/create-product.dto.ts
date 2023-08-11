@@ -1,1 +1,4 @@
-export class CreateProductDto {}
+import { OmitType } from "@nestjs/mapped-types";
+import { ProductEntity } from "../entities/product.entity";
+
+export class CreateProductDto extends OmitType(ProductEntity,['createdAt','id','updatedAt','deletedAt'] as const) {}

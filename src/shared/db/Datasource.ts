@@ -7,7 +7,7 @@ const datasource = new DataSource({
     database: 'Badesaba_Shop',
     username: 'postgres',
     password: 'postgress',
-    entities:["src/**/*.entities.ts"],
+    entities:["src/**/*.entity.ts"],
     migrations:["src/shared/db/migrations/*.ts"]
 });
 export default datasource;
