@@ -3,11 +3,13 @@ import { registerDto } from './dto/register.dto';
 import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcryptjs';
 import { loginDto } from './dto/login.dto';
+import { JwtService } from '@nestjs/jwt/dist/jwt.service';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly jwtService: JwtService,
     ) {}
 
   async register(registerDto: registerDto) {
@@ -35,6 +37,12 @@ export class AuthService {
     if(!isPasswordMath){
       throw new HttpException("wrong password",400)
     }
-    return "omid";
+    
+    const access_token = this.jwtService.sign({
+      sub: user.id,
+      email: user.email,
+    });
+    
+    return { access_token: access_token };
   }
 }
