@@ -13,7 +13,7 @@ export class CatagoryController {
   }
 
   @Get()
-  findAll():string {
+  findAll() {
     return this.catagoryService.findAll();
   }
 
@@ -22,9 +22,9 @@ export class CatagoryController {
     return this.catagoryService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCatagoryDto: UpdateCatagoryDto) {
-    return this.catagoryService.update(+id, updateCatagoryDto);
+  @Patch()
+  update(@Body() updateCatagoryDto: UpdateCatagoryDto) {
+    return this.catagoryService.update(updateCatagoryDto);
   }
 
   @Delete(':id')

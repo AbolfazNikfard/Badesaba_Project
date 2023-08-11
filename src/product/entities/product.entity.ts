@@ -5,6 +5,7 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
+import { CatagoryEntity } from '../../catagory/entities/catagory.entity';
 import {
   Column,
   CreateDateColumn,
@@ -17,7 +18,7 @@ import {
 @Entity('products')
 export class ProductEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  Id: number;
 
   @Column()
   @IsString()
@@ -94,7 +95,7 @@ export class ProductEntity {
   @IsDate()
   deletedAt: Date;
 
-  @ManyToOne(() => CategoryEntity, (category) => category.products)
+  @ManyToOne(() => CatagoryEntity, (category) => category.Products)
   @JoinColumn({ name: 'categoryId' })
-  category: CategoryEntity;
+  category: CatagoryEntity;
 }

@@ -49,7 +49,7 @@ export class ProductService {
   findOne(id: number) {
     try {
       const existProduct = this._productRepository.findOneBy({
-        id: Equal(id),
+        Id: Equal(id),
       });
       if (!existProduct) throw new NotFoundException();
       return existProduct;
@@ -58,13 +58,13 @@ export class ProductService {
     }
   }
 
-  async update(id: number, updateProductDto: UpdateProductDto) {
+  async update(updateProductDto: UpdateProductDto) {
     try {
       const existProduct = await this._productRepository.findOneBy({
-        id: Equal(id),
+        Id: updateProductDto.Id,
       });
       if (!existProduct) throw new NotFoundException();
-      existProduct.updatedAt = new Date();
+      updateProductDto.updatedAt = new Date();
       return this._productRepository.save(updateProductDto);
     } catch (e) {
       throw new InternalServerErrorException(e);
@@ -74,7 +74,7 @@ export class ProductService {
   async remove(id: number) {
     try {
       const existProduct = await this._productRepository.findOneBy({
-        id: Equal(id),
+        Id: Equal(id),
       });
       if (!existProduct) throw new NotFoundException();
       existProduct.deletedAt = new Date();
