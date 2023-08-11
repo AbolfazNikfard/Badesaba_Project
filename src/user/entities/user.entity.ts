@@ -1,10 +1,7 @@
-import {
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { CartEntity } from 'src/cart/entities/cart.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('User')
+@Entity('users')
 export class UsersEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -13,7 +10,7 @@ export class UsersEntity {
   name: string;
 
   @Column({ nullable: true })
-  email: string;    
+  email: string;
 
   @Column({ nullable: true })
   password: string;
@@ -45,4 +42,6 @@ export class UsersEntity {
   @Column()
   deletedAt: Date;
 
+  @OneToMany(() => CartEntity, (carts) => carts.product)
+  carts: CartEntity[];
 }

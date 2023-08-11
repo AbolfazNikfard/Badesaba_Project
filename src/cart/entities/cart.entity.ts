@@ -10,6 +10,7 @@ import {
   PrimaryColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { UsersEntity } from '../../user/entities/user.entity';
 
 @Entity('carts')
 export class CartEntity {
@@ -22,7 +23,7 @@ export class CartEntity {
   @IsNumber()
   productId: number;
 
-  @Column()
+  @Column({ default: 0 })
   @IsNumber()
   quantity: number;
 
