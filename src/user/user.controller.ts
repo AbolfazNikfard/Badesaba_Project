@@ -16,8 +16,4 @@ export class UserController {
   //   return this.userService.update();
   // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.userService.remove();
-  }
 }

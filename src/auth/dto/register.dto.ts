@@ -3,7 +3,8 @@ export class registerDto {
     email: string;
     password: string;
     family: string;
-    age: string;
+    age: number;
+    role:string
     cellphone: string;
     birthdate: number;
     active: string;

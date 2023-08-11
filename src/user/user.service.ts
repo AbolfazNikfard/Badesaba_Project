@@ -18,6 +18,7 @@ export class UserService {
     user.age = createUserDto.age;
     user.cellphone = createUserDto.cellphone;
     user.birthdate = createUserDto.birthdate;
+    user.role = 'user';
     user.active = '';
     user.createdAt = new Date();
     user.updatedAt = new Date();
@@ -27,9 +28,12 @@ export class UserService {
   }
 
   async findByEmail(email:string) {
-    return await this.usersRepository.findOne({
-      where: { email: email },
-    });
+    console.log(email);
+    const status = await this.usersRepository.findOneBy({
+       email: email 
+});
+    console.log(status);
+    return status ;
   }
 
   update(){}

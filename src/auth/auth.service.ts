@@ -6,20 +6,24 @@ import { loginDto } from './dto/login.dto';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly userService: UserService) {}
-  
+  constructor(
+    private readonly userService: UserService
+    ) {}
+
   async register(registerDto: registerDto) {
-    console.log(registerDto.email);
+    console.log('back');
     const user = await this.userService.findByEmail(registerDto.email);
-    console.log(user);
+    console.log("after");
     if (user) {
       throw new HttpException('user already exists', 400);
     }
+
     registerDto.password = await bcrypt.hash(registerDto.password, 10);
     return await this.userService.create(registerDto);
   }
 
   async login(loginDto:loginDto) {
+
     const user = await this.userService.findByEmail(loginDto.email);
     if (!user) {
       throw new HttpException('User not found', 404);

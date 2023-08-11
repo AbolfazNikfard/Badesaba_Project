@@ -8,6 +8,7 @@ const datasource = new DataSource({
     username: 'postgres',
     password: 'postgres',
     entities:["src/**/*.entities.ts"],
-    migrations:["src/shared/db/migrations/*.ts"]
+    migrations:["src/shared/db/migrations/*.ts"],
+    synchronize: true 
 });
 export default datasource;
