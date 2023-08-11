@@ -13,7 +13,8 @@ export class UserService {
   async create(createUserDto: CreateUserDto) {
     const user = new UsersEntity();
     user.name = createUserDto.name;
-    user.password = createUserDto.password
+    user.email = createUserDto.email;
+    user.password = createUserDto.password;
     user.family = createUserDto.family;
     user.age = createUserDto.age;
     user.cellphone = createUserDto.cellphone;
