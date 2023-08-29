@@ -23,7 +23,7 @@ export class CartEntity {
   @IsNumber()
   productId: number;
 
-  @Column()
+  @Column({ default: 0 })
   @IsNumber()
   quantity: number;
 
