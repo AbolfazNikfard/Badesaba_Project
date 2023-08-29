@@ -10,6 +10,7 @@ import {
   PrimaryColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { UsersEntity } from 'src/user/entities/user.entity';
 
 @Entity('carts')
 export class CartEntity {
@@ -32,6 +33,7 @@ export class CartEntity {
   @ManyToOne(() => UsersEntity, (user) => user.carts)
   @JoinColumn({ name: 'userId' })
   user: UsersEntity;
+  
   @ManyToOne(() => ProductEntity, (product) => product.carts)
   @JoinColumn({ name: 'productId' })
   product: ProductEntity;

@@ -23,10 +23,6 @@ export class CartService {
     return `This action returns a #${id} cart`;
   }
 
-  async update(id: number, quntity: number) {
-    const existCart = await this._cartRepository.findOneBy({})
-  }
-
   remove(id: number) {
     return `This action removes a #${id} cart`;
   }

@@ -6,7 +6,7 @@ const datasource = new DataSource({
     port: 5432,
     database: 'Badesaba_Shop',
     username: 'postgres',
-    password: 'postgress',
+    password: 'postgres',
     entities:["src/**/*.entity.ts"],
     migrations:["src/shared/db/migrations/*.ts"]
 });

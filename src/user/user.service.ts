@@ -6,14 +6,16 @@ import { UsersEntity } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectRepository(UsersEntity)
-  private usersRepository: Repository<UsersEntity>){}
+  constructor(
+    @InjectRepository(UsersEntity)
+    private usersRepository: Repository<UsersEntity>,
+  ) {}
 
   async create(createUserDto: CreateUserDto) {
     const user = new UsersEntity();
-    user.name = createUserDto.name
-    user.email = createUserDto.email
-    user.password = createUserDto.password
+    user.name = createUserDto.name;
+    user.email = createUserDto.email;
+    user.password = createUserDto.password;
     user.family = createUserDto.family;
     user.age = createUserDto.age;
     user.cellphone = createUserDto.cellphone;
@@ -27,17 +29,12 @@ export class UserService {
     return createdUser;
   }
 
-  async findByEmail(email:string) {
-    console.log(email);
-    const status = await this.usersRepository.findOneBy({
-       email: email 
-});
-    console.log(status);
-    return status ;
+  async findByEmail(email: string) {
+    const user = await this.usersRepository.findOne({ where: { email } });
+    return user;
   }
 
-  update(){}
+  update() {}
 
-  remove(){}
-
+  remove() {}
 }

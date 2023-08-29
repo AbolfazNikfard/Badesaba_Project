@@ -1,11 +1,14 @@
+import { CartEntity } from 'src/cart/entities/cart.entity';
 import {
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
 @Entity('User')
 export class UsersEntity {
+
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -45,4 +48,6 @@ export class UsersEntity {
   @Column()
   deletedAt: Date;
 
+  @OneToMany(()=>CartEntity,(carts)=>carts.user)
+  carts:CartEntity[]
 }
